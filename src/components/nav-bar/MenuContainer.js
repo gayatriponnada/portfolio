@@ -4,7 +4,7 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 const MenuContainer = ({ menuOpen, close }) => {
-  const location = useLocation()
+  // const location = useLocation()
   const navigate = useNavigate()
 
   const NavigateToPage = (path) => {
