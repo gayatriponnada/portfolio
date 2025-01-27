@@ -1,28 +1,22 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import MenuContainer from './MenuContainer'
-
+import Home from './../../pages/Home'
+import { useNavigate } from 'react-router-dom'
 const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false)
-
+const navigate= useNavigate()
   return (
     <Wrapper>
-      {!menuOpen && (
-        <svg
-          onClick={() => setMenuOpen(true)}
-          xmlns='http://www.w3.org/2000/svg'
-          height='1.2rem'
-          viewBox='0 -960 960 960'
-          width='1.2rem'
-          fill='#5f6368'
-        >
-          <path d='M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z' />
-        </svg>
-      )}
-
-      {menuOpen && (
-        <MenuContainer menuOpen={menuOpen} close={() => setMenuOpen(false)} />
-      )}
+      <TitleContainer>
+        <Title>Gayatri Lavanya Ponnada</Title>
+      </TitleContainer>
+      <TabsContainer>
+        <Tab onClick={()=>navigate('/')}>Home</Tab>
+        <Tab>About</Tab>
+        <Tab>Education</Tab>
+        <Tab>Skills</Tab>
+        <Tab>Work</Tab>
+        <Tab>Contact</Tab>
+      </TabsContainer>
     </Wrapper>
   )
 }
@@ -30,10 +24,33 @@ const Navbar = () => {
 export default Navbar
 
 const Wrapper = styled.div`
-  margin: 0.5rem;
+  position: relative;
+  width: 100%;
+  height: 3.5rem;
+  padding: 1rem 2rem;
+  background-color: #ffffff;
   display: flex;
-  justify-content: flex-end;
-  svg {
-    cursor: pointer;
-  }
+  justify-content: space-between;
+`
+const TitleContainer = styled.div`
+  position: relative;
+`
+
+const Title = styled.div`
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  color: #16404d;
+`
+const TabsContainer = styled.div`
+  position: relative;
+  display: flex;
+  gap: 2rem;
+`
+const Tab = styled.div`
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  color: #16404d;
+  cursor: pointer;
 `

@@ -1,10 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
-import { useLocation, useNavigate } from 'react-router-dom'
-
+import { useNavigate } from 'react-router-dom'
 const MenuContainer = ({ menuOpen, close }) => {
-  // const location = useLocation()
   const navigate = useNavigate()
 
   const NavigateToPage = (path) => {
@@ -14,19 +12,16 @@ const MenuContainer = ({ menuOpen, close }) => {
   return (
     <Wrapper menuOpen={menuOpen}>
       <ButtonContainer>
-        <Button>
-          {menuOpen && (
-            <svg
-              onClick={close}
-              xmlns='http://www.w3.org/2000/svg'
-              height='1.2rem'
-              viewBox='0 -960 960 960'
-              width='1.2rem'
-              fill='#5f6368'
-            >
-              <path d='m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z' />
-            </svg>
-          )}
+        <Button onClick={close}>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            height='1.2rem'
+            viewBox='0 -960 960 960'
+            width='1.2rem'
+            fill='#5f6368'
+          >
+            <path d='m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z' />
+          </svg>
         </Button>
       </ButtonContainer>
       <TextContainer>
@@ -68,6 +63,7 @@ const Wrapper = styled.div`
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 10px;
   transition: all 0.5s ease-in-out;
+  z-index: 9999999;
 `
 
 const ButtonContainer = styled.div`
@@ -86,21 +82,17 @@ const TextContainer = styled.div`
   width: 100%;
   padding: 1rem;
   display: flex;
-  // justify-content:center;
   align-items: center;
   gap: 1rem;
-  svg {
-    color: white;
-    cursor: pointer;
-    color: white;
-  }
 `
-const Text = styled.div`
+const Text = styled.button`
   font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: 0.5px;
   color: white;
   cursor: pointer;
+  border: none;
+  background: none;
 `
 const SecondaryText = styled.div`
   position: relative;
