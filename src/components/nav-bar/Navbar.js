@@ -1,17 +1,25 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import Home from './../../pages/Home'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 const Navbar = () => {
-const navigate= useNavigate()
+  const navigate = useNavigate()
+  const location = useLocation()
   return (
     <Wrapper>
       <TitleContainer>
         <Title>Gayatri Lavanya Ponnada</Title>
       </TitleContainer>
       <TabsContainer>
-        <Tab onClick={()=>navigate('/')}>Home</Tab>
-        <Tab>About</Tab>
+        <Tab onClick={() => navigate('/')} active={location.pathname === '/'}>
+          Home
+        </Tab>
+        <Tab
+          onClick={() => navigate('/about')}
+          active={location.pathname === '/about'}
+        >
+          About
+        </Tab>
         <Tab>Education</Tab>
         <Tab>Skills</Tab>
         <Tab>Work</Tab>
@@ -53,4 +61,5 @@ const Tab = styled.div`
   letter-spacing: 0.5px;
   color: #16404d;
   cursor: pointer;
+  border-bottom: ${(props) => (props.active ? '2px solid #16404d' : '')};
 `
